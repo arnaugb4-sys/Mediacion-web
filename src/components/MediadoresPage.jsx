@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { MapPin, Star, Globe, Clock, Monitor, CheckCircle, ArrowLeft, Filter } from 'lucide-react';
 import { mediadores } from '../data/index';
+import anaBeltranImg from '../assets/ana-beltran.jpg';
+import carlosMedinaImg from '../assets/carlos-medina.jpg';
+import lauraSanchezImg from '../assets/laura-sanchez.jpg';
+import perePlanesImg from '../assets/pere-planes.jpg';
+
+const mediadorFotos = {
+  'Ana Beltrán': anaBeltranImg,
+  'Carlos Medina': carlosMedinaImg,
+  'Laura Sánchez': lauraSanchezImg,
+  'Pere Planes': perePlanesImg,
+};
 
 function StarRating({ value }) {
   return (
@@ -57,9 +68,17 @@ export default function MediadoresPage({ onBack }) {
               <div className="p-6 flex flex-col md:flex-row gap-5">
                 {/* Avatar */}
                 <div className="flex-shrink-0">
-                  <div className={`w-16 h-16 rounded-sm ${med.color} flex items-center justify-center text-white font-display font-semibold text-xl shadow-sm`}>
-                    {med.iniciales}
-                  </div>
+                  {mediadorFotos[med.nombre] ? (
+                    <img
+                      src={mediadorFotos[med.nombre]}
+                      alt={med.nombre}
+                      className="w-16 h-16 rounded-sm object-cover shadow-sm"
+                    />
+                  ) : (
+                    <div className={`w-16 h-16 rounded-sm ${med.color} flex items-center justify-center text-white font-display font-semibold text-xl shadow-sm`}>
+                      {med.iniciales}
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}

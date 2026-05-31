@@ -7,6 +7,7 @@ import {
 import { expedientes, mensajesBandeja, sesionesCalendario, registroAccesos } from '../data/index';
 import IniciarMediacion from './IniciarMediacion';
 import logoImg from '../assets/logo.png';
+import perePlanesImg from '../assets/pere-planes.jpg';
 
 const modalidadIcon = { 'Telemática': '💻', 'Presencial': '🏛️', 'Híbrida': '🔄' };
 
@@ -96,12 +97,21 @@ export default function Dashboard({ onLogout }) {
             {tab === 'inicio' && (
               <div className="animate-fade-in">
                 <div className="mb-6">
-                  <h1 className="font-display text-2xl font-semibold text-institutional-800">
-                    Bienvenido, Pere Planes
-                  </h1>
-                  <p className="text-sm font-body text-gray-500 mt-1">
-                    {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                  </p>
+                  <div className="flex items-center gap-4">
+                    <div>
+                      <h1 className="font-display text-2xl font-semibold text-institutional-800">
+                        Bienvenido, Pere Planes
+                      </h1>
+                      <p className="text-sm font-body text-gray-500 mt-1">
+                        {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                      </p>
+                    </div>
+                    <img
+                      src={perePlanesImg}
+                      alt="Pere Planes"
+                      className="w-14 h-14 rounded-sm object-cover shadow-sm flex-shrink-0"
+                    />
+                  </div>
                 </div>
 
                 {/* Iniciar mediación — big CTA */}

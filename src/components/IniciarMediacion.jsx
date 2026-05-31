@@ -34,6 +34,26 @@ export default function IniciarMediacion({ onBack }) {
     pretensiones: '', intereses: '', limites: '', antecedentes: '', observaciones: '',
   });
 
+  const FRASE_IA = "Hola, soy la IA de Med·IA·ción. Adjunta tu documentación o describe el caso y te ayudaré a ordenar la información y encontrar posibles acuerdos";
+  const [textoAnimado, setTextoAnimado] = useState('');
+  const [animacionCompleta, setAnimacionCompleta] = useState(false);
+
+  React.useEffect(() => {
+    if (etapa !== 'ia') return;
+    setTextoAnimado('');
+    setAnimacionCompleta(false);
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setTextoAnimado(FRASE_IA.slice(0, i));
+      if (i >= FRASE_IA.length) {
+        clearInterval(interval);
+        setAnimacionCompleta(true);
+      }
+    }, 30);
+    return () => clearInterval(interval);
+  }, [etapa]);
+
   const handleMetodoClick = (id) => {
     setMetodoAnimado(id);
     setMetodoSel(id);
@@ -232,6 +252,15 @@ export default function IniciarMediacion({ onBack }) {
 
             {/* Upload / input area */}
             <div className="bg-white border-2 border-dashed border-gray-200 rounded-sm p-6 mb-5 hover:border-institutional-300 transition-colors">
+              {/* Typewriter greeting */}
+              <div className="mb-4 pb-4 border-b border-gray-100 min-h-[2.5rem]">
+                <p className="text-sm font-body text-institutional-700 leading-relaxed">
+                  {textoAnimado}
+                  {!animacionCompleta && (
+                    <span className="inline-block w-0.5 h-4 bg-institutional-500 ml-0.5 align-middle animate-pulse" />
+                  )}
+                </p>
+              </div>
               <div className="flex items-center gap-2 mb-3">
                 <Upload size={16} className="text-gray-400" />
                 <span className="text-xs font-body text-gray-400 font-semibold uppercase tracking-wider">Documentación</span>

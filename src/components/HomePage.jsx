@@ -1,7 +1,5 @@
 import React from 'react';
 import { Scale, Search, Shield, FileText, CheckCircle } from 'lucide-react';
-import logoImg from '../assets/logo.png';
-import { BrandName } from './Header';
 
 export default function HomePage({ onNavigate }) {
   return (
@@ -9,18 +7,6 @@ export default function HomePage({ onNavigate }) {
       {/* Hero */}
       <section className="bg-white pt-16 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Logo zone - pure white background, generous space */}
-          <div className="mb-12 flex justify-center">
-            <div className="bg-white p-8 rounded-sm">
-              <img
-                src={logoImg}
-                alt="Logo de Med IA ción"
-                className="h-24 md:h-32 w-auto object-contain mx-auto"
-                style={{ maxWidth: 420 }}
-              />
-            </div>
-          </div>
-
           {/* Title */}
           <h1 className="font-display text-5xl md:text-7xl font-semibold mb-5 leading-tight">
             <span className="gradient-title">Med·<strong>IA</strong>·ción</span>
